@@ -21,20 +21,18 @@ Tested with relavent clients and the **Postman API testing** as well.
 ```
 MCP_Servers_SoulfulAI/
 ├── Context7 MCP Server/
-│ └── Code + all .md files
+│ └── all .md files and Videos
 ├── Firebase MCP Server/
-│ └── Code + all .md files
+│ └── all .md files and Videos
 ├── OBS MCP Server/
-│ └── Code + all .md files
+│ └── all .md files and Videos
 ├── SalesForce MCP Server/
-│ └── Code + all .md files
+│ └── all .md files and Videos
 ├── Supabase MCP Server/
-│ └── Code + all .md files
+│ └── all .md files and Videos
+|---"adya_mcp_hackathon" -> THIS CONTAINS THE CODE FOR THE ALL MCP SERVERS (Inside js->server-> )
 └── README.md
 ```
-
-
----
 
 
 
