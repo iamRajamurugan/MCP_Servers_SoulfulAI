@@ -1,0 +1,150 @@
+{
+  "requests": [
+    {
+      "description": "Gets the status of the record output.",
+      "requestType": "GetRecordStatus",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "outputActive",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the output is active"
+        },
+        {
+          "valueName": "outputPaused",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the output is paused"
+        },
+        {
+          "valueName": "outputTimecode",
+          "valueType": "String",
+          "valueDescription": "Current formatted timecode string for the output"
+        },
+        {
+          "valueName": "outputDuration",
+          "valueType": "Number",
+          "valueDescription": "Current duration in milliseconds for the output"
+        },
+        {
+          "valueName": "outputBytes",
+          "valueType": "Number",
+          "valueDescription": "Number of bytes sent by the output"
+        }
+      ]
+    },
+    {
+      "description": "Toggles the status of the record output.",
+      "requestType": "ToggleRecord",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "outputActive",
+          "valueType": "Boolean",
+          "valueDescription": "The new active state of the output"
+        }
+      ]
+    },
+    {
+      "description": "Starts the record output.",
+      "requestType": "StartRecord",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Stops the record output.",
+      "requestType": "StopRecord",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "outputPath",
+          "valueType": "String",
+          "valueDescription": "File name for the saved recording"
+        }
+      ]
+    },
+    {
+      "description": "Toggles pause on the record output.",
+      "requestType": "ToggleRecordPause",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Pauses the record output.",
+      "requestType": "PauseRecord",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Resumes the record output.",
+      "requestType": "ResumeRecord",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Splits the current file being recorded into a new file.",
+      "requestType": "SplitRecordFile",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.5.0",
+      "category": "record",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Adds a new chapter marker to the file currently being recorded.\n\nNote: As of OBS 30.2.0, the only file format supporting this feature is Hybrid MP4.",
+      "requestType": "CreateRecordChapter",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.5.0",
+      "category": "record",
+      "requestFields": [
+        {
+          "valueName": "chapterName",
+          "valueType": "String",
+          "valueDescription": "Name of the new chapter",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

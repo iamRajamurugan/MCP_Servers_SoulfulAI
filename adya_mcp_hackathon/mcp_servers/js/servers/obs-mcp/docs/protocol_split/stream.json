@@ -1,0 +1,115 @@
+{
+  "requests": [
+    {
+      "description": "Gets the status of the stream output.",
+      "requestType": "GetStreamStatus",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "stream",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "outputActive",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the output is active"
+        },
+        {
+          "valueName": "outputReconnecting",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the output is currently reconnecting"
+        },
+        {
+          "valueName": "outputTimecode",
+          "valueType": "String",
+          "valueDescription": "Current formatted timecode string for the output"
+        },
+        {
+          "valueName": "outputDuration",
+          "valueType": "Number",
+          "valueDescription": "Current duration in milliseconds for the output"
+        },
+        {
+          "valueName": "outputCongestion",
+          "valueType": "Number",
+          "valueDescription": "Congestion of the output"
+        },
+        {
+          "valueName": "outputBytes",
+          "valueType": "Number",
+          "valueDescription": "Number of bytes sent by the output"
+        },
+        {
+          "valueName": "outputSkippedFrames",
+          "valueType": "Number",
+          "valueDescription": "Number of frames skipped by the output's process"
+        },
+        {
+          "valueName": "outputTotalFrames",
+          "valueType": "Number",
+          "valueDescription": "Total number of frames delivered by the output's process"
+        }
+      ]
+    },
+    {
+      "description": "Toggles the status of the stream output.",
+      "requestType": "ToggleStream",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "stream",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "outputActive",
+          "valueType": "Boolean",
+          "valueDescription": "New state of the stream output"
+        }
+      ]
+    },
+    {
+      "description": "Starts the stream output.",
+      "requestType": "StartStream",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "stream",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Stops the stream output.",
+      "requestType": "StopStream",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "stream",
+      "requestFields": [],
+      "responseFields": []
+    },
+    {
+      "description": "Sends CEA-608 caption text over the stream output.",
+      "requestType": "SendStreamCaption",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "stream",
+      "requestFields": [
+        {
+          "valueName": "captionText",
+          "valueType": "String",
+          "valueDescription": "Caption text",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

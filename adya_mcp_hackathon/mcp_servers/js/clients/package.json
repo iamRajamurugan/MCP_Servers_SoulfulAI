@@ -1,0 +1,42 @@
+{
+  "name": "mcp_client",
+  "version": "1.0.0",
+  "description": "mcp_client",
+  "type": "module",
+  "main": "build/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/main.js",
+    "dev": "tsx watch src/main.ts"
+  },
+  "dependencies": {
+    "@azure/openai": "^2.0.0",
+    "@modelcontextprotocol/sdk": "^1.11.3",
+    "axios": "^1.8.4",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0",
+    "openai": "^4.98.0",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.1",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.17.30",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "api",
+    "ai",
+    "assistant"
+  ],
+  "author": "",
+  "license": "ISC"
+}

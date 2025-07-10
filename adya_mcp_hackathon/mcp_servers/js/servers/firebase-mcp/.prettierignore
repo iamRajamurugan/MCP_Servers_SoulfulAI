@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+test-output
+.github
+.vscode
+*.json
+*.md

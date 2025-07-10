@@ -1,0 +1,351 @@
+{
+  "requests": [
+    {
+      "description": "Gets an array of all scenes in OBS.",
+      "requestType": "GetSceneList",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "currentProgramSceneName",
+          "valueType": "String",
+          "valueDescription": "Current program scene name. Can be `null` if internal state desync"
+        },
+        {
+          "valueName": "currentProgramSceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current program scene UUID. Can be `null` if internal state desync"
+        },
+        {
+          "valueName": "currentPreviewSceneName",
+          "valueType": "String",
+          "valueDescription": "Current preview scene name. `null` if not in studio mode"
+        },
+        {
+          "valueName": "currentPreviewSceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current preview scene UUID. `null` if not in studio mode"
+        },
+        {
+          "valueName": "scenes",
+          "valueType": "Array<Object>",
+          "valueDescription": "Array of scenes"
+        }
+      ]
+    },
+    {
+      "description": "Gets an array of all groups in OBS.\n\nGroups in OBS are actually scenes, but renamed and modified. In obs-websocket, we treat them as scenes where we can.",
+      "requestType": "GetGroupList",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "groups",
+          "valueType": "Array<String>",
+          "valueDescription": "Array of group names"
+        }
+      ]
+    },
+    {
+      "description": "Gets the current program scene.\n\nNote: This request is slated to have the `currentProgram`-prefixed fields removed from in an upcoming RPC version.",
+      "requestType": "GetCurrentProgramScene",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Current program scene name"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current program scene UUID"
+        },
+        {
+          "valueName": "currentProgramSceneName",
+          "valueType": "String",
+          "valueDescription": "Current program scene name (Deprecated)"
+        },
+        {
+          "valueName": "currentProgramSceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current program scene UUID (Deprecated)"
+        }
+      ]
+    },
+    {
+      "description": "Sets the current program scene.",
+      "requestType": "SetCurrentProgramScene",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Scene name to set as the current program scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "Scene UUID to set as the current program scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the current preview scene.\n\nOnly available when studio mode is enabled.\n\nNote: This request is slated to have the `currentPreview`-prefixed fields removed from in an upcoming RPC version.",
+      "requestType": "GetCurrentPreviewScene",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Current preview scene name"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current preview scene UUID"
+        },
+        {
+          "valueName": "currentPreviewSceneName",
+          "valueType": "String",
+          "valueDescription": "Current preview scene name"
+        },
+        {
+          "valueName": "currentPreviewSceneUuid",
+          "valueType": "String",
+          "valueDescription": "Current preview scene UUID"
+        }
+      ]
+    },
+    {
+      "description": "Sets the current preview scene.\n\nOnly available when studio mode is enabled.",
+      "requestType": "SetCurrentPreviewScene",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Scene name to set as the current preview scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "Scene UUID to set as the current preview scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Creates a new scene in OBS.",
+      "requestType": "CreateScene",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name for the new scene",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the created scene"
+        }
+      ]
+    },
+    {
+      "description": "Removes a scene from OBS.",
+      "requestType": "RemoveScene",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene to remove",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene to remove",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Sets the name of a scene (rename).",
+      "requestType": "SetSceneName",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene to be renamed",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene to be renamed",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "newSceneName",
+          "valueType": "String",
+          "valueDescription": "New name for the scene",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the scene transition overridden for a scene.\n\nNote: A transition UUID response field is not currently able to be implemented as of 2024-1-18.",
+      "requestType": "GetSceneSceneTransitionOverride",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "transitionName",
+          "valueType": "String",
+          "valueDescription": "Name of the overridden scene transition, else `null`"
+        },
+        {
+          "valueName": "transitionDuration",
+          "valueType": "Number",
+          "valueDescription": "Duration of the overridden scene transition, else `null`"
+        }
+      ]
+    },
+    {
+      "description": "Sets the scene transition overridden for a scene.",
+      "requestType": "SetSceneSceneTransitionOverride",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scenes",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "transitionName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene transition to use as override. Specify `null` to remove",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unchanged"
+        },
+        {
+          "valueName": "transitionDuration",
+          "valueType": "Number",
+          "valueDescription": "Duration to use for any overridden transition. Specify `null` to remove",
+          "valueRestrictions": ">= 50, <= 20000",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unchanged"
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "name": "@gannonh/firebase-mcp",
+  "version": "1.4.9",
+  "description": "Firebase MCP server for interacting with Firebase services through the Model Context Protocol",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "firebase-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:emulator": "USE_FIREBASE_EMULATOR=true vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:emulator": "USE_FIREBASE_EMULATOR=true vitest run --coverage",
+    "test:verbose": "clear && vitest run --reporter verbose",
+    "start": "node dist/index.js",
+    "start:http": "MCP_TRANSPORT=http node dist/index.js",
+    "dev": "tsc && node dist/index.js",
+    "dev:http": "tsc && MCP_TRANSPORT=http node dist/index.js",
+    "inspect": ".scripts/inspect-mcp.sh",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "fix": "npm run lint:fix && npm run format",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "preflight": "npm run format && npm run lint && npm run build && npm run test:coverage:emulator && npm ls --depth=0",
+    "preflight:prod": "npm run format && npm run lint && npm run build && npm run test:coverage && npm ls --depth=0",
+    "preflight:both": "npm run preflight && npm run preflight:prod",
+    "publish-preflight": "npm run format:check && npm run lint && npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.0",
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "firebase-admin": "^13.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.26.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.14",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
+    "@vitest/coverage-v8": "^3.1.3",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.32.0",
+    "vitest": "^3.1.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "firebase",
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "claude",
+    "anthropic",
+    "firestore",
+    "storage",
+    "authentication"
+  ],
+  "author": "Gannon Hall (https://github.com/gannonh)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gannonh/firebase-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gannonh/firebase-mcp/issues"
+  },
+  "homepage": "https://github.com/gannonh/firebase-mcp#readme"
+}

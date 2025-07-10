@@ -1,0 +1,751 @@
+{
+  "requests": [
+    {
+      "description": "Gets a list of all scene items in a scene.\n\nScenes only",
+      "requestType": "GetSceneItemList",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene to get the items of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene to get the items of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItems",
+          "valueType": "Array<Object>",
+          "valueDescription": "Array of scene items in the scene"
+        }
+      ]
+    },
+    {
+      "description": "Basically GetSceneItemList, but for groups.\n\nUsing groups at all in OBS is discouraged, as they are very broken under the hood. Please use nested scenes instead.\n\nGroups only",
+      "requestType": "GetGroupSceneItemList",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the group to get the items of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the group to get the items of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItems",
+          "valueType": "Array<Object>",
+          "valueDescription": "Array of scene items in the group"
+        }
+      ]
+    },
+    {
+      "description": "Searches a scene for a source, and returns its id.\n\nScenes and Groups",
+      "requestType": "GetSceneItemId",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene or group to search in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene or group to search in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source to find",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "searchOffset",
+          "valueType": "Number",
+          "valueDescription": "Number of matches to skip during search. >= 0 means first forward. -1 means last (top) item",
+          "valueRestrictions": ">= -1",
+          "valueOptional": true,
+          "valueOptionalBehavior": "0"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item"
+        }
+      ]
+    },
+    {
+      "description": "Gets the source associated with a scene item.",
+      "requestType": "GetSceneItemSource",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.4.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source associated with the scene item"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source associated with the scene item"
+        }
+      ]
+    },
+    {
+      "description": "Creates a new scene item using a source.\n\nScenes only",
+      "requestType": "CreateSceneItem",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene to create the new item in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene to create the new item in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source to add to the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source to add to the scene",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "Enable state to apply to the scene item on creation",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "True"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item"
+        }
+      ]
+    },
+    {
+      "description": "Removes a scene item from a scene.\n\nScenes only",
+      "requestType": "RemoveSceneItem",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Duplicates a scene item, copying all transform and crop info.\n\nScenes only",
+      "requestType": "DuplicateSceneItem",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "destinationSceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene to create the duplicated item in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "From scene is assumed"
+        },
+        {
+          "valueName": "destinationSceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene to create the duplicated item in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "From scene is assumed"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the duplicated scene item"
+        }
+      ]
+    },
+    {
+      "description": "Gets the transform and crop info of a scene item.\n\nScenes and Groups",
+      "requestType": "GetSceneItemTransform",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemTransform",
+          "valueType": "Object",
+          "valueDescription": "Object containing scene item transform info"
+        }
+      ]
+    },
+    {
+      "description": "Sets the transform and crop info of a scene item.",
+      "requestType": "SetSceneItemTransform",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "sceneItemTransform",
+          "valueType": "Object",
+          "valueDescription": "Object containing scene item transform info to update",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the enable state of a scene item.\n\nScenes and Groups",
+      "requestType": "GetSceneItemEnabled",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the scene item is enabled. `true` for enabled, `false` for disabled"
+        }
+      ]
+    },
+    {
+      "description": "Sets the enable state of a scene item.\n\nScenes and Groups",
+      "requestType": "SetSceneItemEnabled",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "sceneItemEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "New enable state of the scene item",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the lock state of a scene item.\n\nScenes and Groups",
+      "requestType": "GetSceneItemLocked",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemLocked",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the scene item is locked. `true` for locked, `false` for unlocked"
+        }
+      ]
+    },
+    {
+      "description": "Sets the lock state of a scene item.\n\nScenes and Group",
+      "requestType": "SetSceneItemLocked",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "sceneItemLocked",
+          "valueType": "Boolean",
+          "valueDescription": "New lock state of the scene item",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the index position of a scene item in a scene.\n\nAn index of 0 is at the bottom of the source list in the UI.\n\nScenes and Groups",
+      "requestType": "GetSceneItemIndex",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemIndex",
+          "valueType": "Number",
+          "valueDescription": "Index position of the scene item"
+        }
+      ]
+    },
+    {
+      "description": "Sets the index position of a scene item in a scene.\n\nScenes and Groups",
+      "requestType": "SetSceneItemIndex",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "sceneItemIndex",
+          "valueType": "Number",
+          "valueDescription": "New index position of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the blend mode of a scene item.\n\nBlend modes:\n\n- `OBS_BLEND_NORMAL`\n- `OBS_BLEND_ADDITIVE`\n- `OBS_BLEND_SUBTRACT`\n- `OBS_BLEND_SCREEN`\n- `OBS_BLEND_MULTIPLY`\n- `OBS_BLEND_LIGHTEN`\n- `OBS_BLEND_DARKEN`\n\nScenes and Groups",
+      "requestType": "GetSceneItemBlendMode",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "sceneItemBlendMode",
+          "valueType": "String",
+          "valueDescription": "Current blend mode"
+        }
+      ]
+    },
+    {
+      "description": "Sets the blend mode of a scene item.\n\nScenes and Groups",
+      "requestType": "SetSceneItemBlendMode",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "scene items",
+      "requestFields": [
+        {
+          "valueName": "sceneName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the scene the item is in",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sceneItemId",
+          "valueType": "Number",
+          "valueDescription": "Numeric ID of the scene item",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "sceneItemBlendMode",
+          "valueType": "String",
+          "valueDescription": "New blend mode",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

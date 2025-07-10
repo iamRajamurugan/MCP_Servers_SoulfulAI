@@ -1,0 +1,24 @@
+{
+	"name": "mcp-project",
+	"version": "1.0.0",
+	"private": true,
+	"workspaces": [
+		"clients",
+		"servers/*"
+	],
+	"scripts": {
+		"dev:client": "npm run dev --workspace=clients",
+		"start:client": "npm run start --workspace=clients",
+		"build:all": "npm run build --workspaces --if-present",
+		"start:sample_server_name": "npm run start --workspace=servers/server_folder_name",
+    	"start:zoom": "npm run watch --workspace=servers/ZOOMMCP",
+		"install:all": "npm install"
+	},
+	"devDependencies": {
+		"concurrently": "^8.2.0",
+		"nodemon": "^3.0.0"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "^0.4.0"
+	}
+}

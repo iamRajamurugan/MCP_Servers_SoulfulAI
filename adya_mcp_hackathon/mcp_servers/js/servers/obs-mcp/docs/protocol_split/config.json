@@ -1,0 +1,482 @@
+{
+  "requests": [
+    {
+      "description": "Gets the value of a \"slot\" from the selected persistent data realm.",
+      "requestType": "GetPersistentData",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "realm",
+          "valueType": "String",
+          "valueDescription": "The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "slotName",
+          "valueType": "String",
+          "valueDescription": "The name of the slot to retrieve data from",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "slotValue",
+          "valueType": "Any",
+          "valueDescription": "Value associated with the slot. `null` if not set"
+        }
+      ]
+    },
+    {
+      "description": "Sets the value of a \"slot\" from the selected persistent data realm.",
+      "requestType": "SetPersistentData",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "realm",
+          "valueType": "String",
+          "valueDescription": "The data realm to select. `OBS_WEBSOCKET_DATA_REALM_GLOBAL` or `OBS_WEBSOCKET_DATA_REALM_PROFILE`",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "slotName",
+          "valueType": "String",
+          "valueDescription": "The name of the slot to retrieve data from",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "slotValue",
+          "valueType": "Any",
+          "valueDescription": "The value to apply to the slot",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets an array of all scene collections",
+      "requestType": "GetSceneCollectionList",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "currentSceneCollectionName",
+          "valueType": "String",
+          "valueDescription": "The name of the current scene collection"
+        },
+        {
+          "valueName": "sceneCollections",
+          "valueType": "Array<String>",
+          "valueDescription": "Array of all available scene collections"
+        }
+      ]
+    },
+    {
+      "description": "Switches to a scene collection.\n\nNote: This will block until the collection has finished changing.",
+      "requestType": "SetCurrentSceneCollection",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "sceneCollectionName",
+          "valueType": "String",
+          "valueDescription": "Name of the scene collection to switch to",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Creates a new scene collection, switching to it in the process.\n\nNote: This will block until the collection has finished changing.",
+      "requestType": "CreateSceneCollection",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "sceneCollectionName",
+          "valueType": "String",
+          "valueDescription": "Name for the new scene collection",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets an array of all profiles",
+      "requestType": "GetProfileList",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "currentProfileName",
+          "valueType": "String",
+          "valueDescription": "The name of the current profile"
+        },
+        {
+          "valueName": "profiles",
+          "valueType": "Array<String>",
+          "valueDescription": "Array of all available profiles"
+        }
+      ]
+    },
+    {
+      "description": "Switches to a profile.",
+      "requestType": "SetCurrentProfile",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "profileName",
+          "valueType": "String",
+          "valueDescription": "Name of the profile to switch to",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Creates a new profile, switching to it in the process",
+      "requestType": "CreateProfile",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "profileName",
+          "valueType": "String",
+          "valueDescription": "Name for the new profile",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Removes a profile. If the current profile is chosen, it will change to a different profile first.",
+      "requestType": "RemoveProfile",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "profileName",
+          "valueType": "String",
+          "valueDescription": "Name of the profile to remove",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets a parameter from the current profile's configuration.",
+      "requestType": "GetProfileParameter",
+      "complexity": 4,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "parameterCategory",
+          "valueType": "String",
+          "valueDescription": "Category of the parameter to get",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "parameterName",
+          "valueType": "String",
+          "valueDescription": "Name of the parameter to get",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "parameterValue",
+          "valueType": "String",
+          "valueDescription": "Value associated with the parameter. `null` if not set and no default"
+        },
+        {
+          "valueName": "defaultParameterValue",
+          "valueType": "String",
+          "valueDescription": "Default value associated with the parameter. `null` if no default"
+        }
+      ]
+    },
+    {
+      "description": "Sets the value of a parameter in the current profile's configuration.",
+      "requestType": "SetProfileParameter",
+      "complexity": 4,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "parameterCategory",
+          "valueType": "String",
+          "valueDescription": "Category of the parameter to set",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "parameterName",
+          "valueType": "String",
+          "valueDescription": "Name of the parameter to set",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "parameterValue",
+          "valueType": "String",
+          "valueDescription": "Value of the parameter to set. Use `null` to delete",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the current video settings.\n\nNote: To get the true FPS value, divide the FPS numerator by the FPS denominator. Example: `60000/1001`",
+      "requestType": "GetVideoSettings",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "fpsNumerator",
+          "valueType": "Number",
+          "valueDescription": "Numerator of the fractional FPS value"
+        },
+        {
+          "valueName": "fpsDenominator",
+          "valueType": "Number",
+          "valueDescription": "Denominator of the fractional FPS value"
+        },
+        {
+          "valueName": "baseWidth",
+          "valueType": "Number",
+          "valueDescription": "Width of the base (canvas) resolution in pixels"
+        },
+        {
+          "valueName": "baseHeight",
+          "valueType": "Number",
+          "valueDescription": "Height of the base (canvas) resolution in pixels"
+        },
+        {
+          "valueName": "outputWidth",
+          "valueType": "Number",
+          "valueDescription": "Width of the output resolution in pixels"
+        },
+        {
+          "valueName": "outputHeight",
+          "valueType": "Number",
+          "valueDescription": "Height of the output resolution in pixels"
+        }
+      ]
+    },
+    {
+      "description": "Sets the current video settings.\n\nNote: Fields must be specified in pairs. For example, you cannot set only `baseWidth` without needing to specify `baseHeight`.",
+      "requestType": "SetVideoSettings",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "fpsNumerator",
+          "valueType": "Number",
+          "valueDescription": "Numerator of the fractional FPS value",
+          "valueRestrictions": ">= 1",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        },
+        {
+          "valueName": "fpsDenominator",
+          "valueType": "Number",
+          "valueDescription": "Denominator of the fractional FPS value",
+          "valueRestrictions": ">= 1",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        },
+        {
+          "valueName": "baseWidth",
+          "valueType": "Number",
+          "valueDescription": "Width of the base (canvas) resolution in pixels",
+          "valueRestrictions": ">= 1, <= 4096",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        },
+        {
+          "valueName": "baseHeight",
+          "valueType": "Number",
+          "valueDescription": "Height of the base (canvas) resolution in pixels",
+          "valueRestrictions": ">= 1, <= 4096",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        },
+        {
+          "valueName": "outputWidth",
+          "valueType": "Number",
+          "valueDescription": "Width of the output resolution in pixels",
+          "valueRestrictions": ">= 1, <= 4096",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        },
+        {
+          "valueName": "outputHeight",
+          "valueType": "Number",
+          "valueDescription": "Height of the output resolution in pixels",
+          "valueRestrictions": ">= 1, <= 4096",
+          "valueOptional": true,
+          "valueOptionalBehavior": "Not changed"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the current stream service settings (stream destination).",
+      "requestType": "GetStreamServiceSettings",
+      "complexity": 4,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "streamServiceType",
+          "valueType": "String",
+          "valueDescription": "Stream service type, like `rtmp_custom` or `rtmp_common`"
+        },
+        {
+          "valueName": "streamServiceSettings",
+          "valueType": "Object",
+          "valueDescription": "Stream service settings"
+        }
+      ]
+    },
+    {
+      "description": "Sets the current stream service settings (stream destination).\n\nNote: Simple RTMP settings can be set with type `rtmp_custom` and the settings fields `server` and `key`.",
+      "requestType": "SetStreamServiceSettings",
+      "complexity": 4,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "streamServiceType",
+          "valueType": "String",
+          "valueDescription": "Type of stream service to apply. Example: `rtmp_common` or `rtmp_custom`",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "streamServiceSettings",
+          "valueType": "Object",
+          "valueDescription": "Settings to apply to the service",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the current directory that the record output is set to.",
+      "requestType": "GetRecordDirectory",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "config",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "recordDirectory",
+          "valueType": "String",
+          "valueDescription": "Output directory"
+        }
+      ]
+    },
+    {
+      "description": "Sets the current directory that the record output writes files to.",
+      "requestType": "SetRecordDirectory",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.3.0",
+      "category": "config",
+      "requestFields": [
+        {
+          "valueName": "recordDirectory",
+          "valueType": "String",
+          "valueDescription": "Output directory",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

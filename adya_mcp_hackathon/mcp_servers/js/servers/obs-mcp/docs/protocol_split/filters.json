@@ -1,0 +1,410 @@
+{
+  "requests": [
+    {
+      "description": "Gets an array of all available source filter kinds.\n\nSimilar to `GetInputKindList`",
+      "requestType": "GetSourceFilterKindList",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.4.0",
+      "category": "filters",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "sourceFilterKinds",
+          "valueType": "Array<String>",
+          "valueDescription": "Array of source filter kinds"
+        }
+      ]
+    },
+    {
+      "description": "Gets an array of all of a source's filters.",
+      "requestType": "GetSourceFilterList",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "filters",
+          "valueType": "Array<Object>",
+          "valueDescription": "Array of filters"
+        }
+      ]
+    },
+    {
+      "description": "Gets the default settings for a filter kind.",
+      "requestType": "GetSourceFilterDefaultSettings",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "filterKind",
+          "valueType": "String",
+          "valueDescription": "Filter kind to get the default settings for",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "defaultFilterSettings",
+          "valueType": "Object",
+          "valueDescription": "Object of default settings for the filter kind"
+        }
+      ]
+    },
+    {
+      "description": "Creates a new filter, adding it to the specified source.",
+      "requestType": "CreateSourceFilter",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source to add the filter to",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source to add the filter to",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the new filter to be created",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "filterKind",
+          "valueType": "String",
+          "valueDescription": "The kind of filter to be created",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "filterSettings",
+          "valueType": "Object",
+          "valueDescription": "Settings object to initialize the filter with",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Default settings used"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Removes a filter from a source.",
+      "requestType": "RemoveSourceFilter",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the filter to remove",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Sets the name of a source filter (rename).",
+      "requestType": "SetSourceFilterName",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Current name of the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "newFilterName",
+          "valueType": "String",
+          "valueDescription": "New name for the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets the info for a specific source filter.",
+      "requestType": "GetSourceFilter",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "filterEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "Whether the filter is enabled"
+        },
+        {
+          "valueName": "filterIndex",
+          "valueType": "Number",
+          "valueDescription": "Index of the filter in the list, beginning at 0"
+        },
+        {
+          "valueName": "filterKind",
+          "valueType": "String",
+          "valueDescription": "The kind of filter"
+        },
+        {
+          "valueName": "filterSettings",
+          "valueType": "Object",
+          "valueDescription": "Settings object associated with the filter"
+        }
+      ]
+    },
+    {
+      "description": "Sets the index position of a filter on a source.",
+      "requestType": "SetSourceFilterIndex",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "filterIndex",
+          "valueType": "Number",
+          "valueDescription": "New index position of the filter",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Sets the settings of a source filter.",
+      "requestType": "SetSourceFilterSettings",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the filter to set the settings of",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "filterSettings",
+          "valueType": "Object",
+          "valueDescription": "Object of settings to apply",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "overlay",
+          "valueType": "Boolean",
+          "valueDescription": "True == apply the settings on top of existing ones, False == reset the input to its defaults, then apply settings.",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "true"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Sets the enable state of a source filter.",
+      "requestType": "SetSourceFilterEnabled",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "filters",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source the filter is on",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "filterName",
+          "valueType": "String",
+          "valueDescription": "Name of the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "filterEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "New enable state of the filter",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

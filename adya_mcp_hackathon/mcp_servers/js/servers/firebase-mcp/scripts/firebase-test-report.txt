@@ -1,0 +1,18 @@
+
+Firebase SDK Output Test Report
+==============================
+
+Test Date: 2025-05-10T14:38:02.588Z
+
+Stdout Patterns Found:
+parent:
+pageSize:
+CallSettings
+retry:
+
+Stderr Patterns Found:
+None
+
+Collections Found: books, test_collection, timestamp_test, users
+
+Conclusion: Firebase SDK IS writing debug output to stdout/stderr during listCollections() call.

@@ -1,0 +1,31 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - serviceAccountKeyPath
+    properties:
+      serviceAccountKeyPath:
+        type: string
+        description: Absolute path to your Firebase service account key JSON file.
+      firebaseStorageBucket:
+        type: string
+        description: Optional. Firebase Storage bucket name. If not provided, defaults
+          to [projectId].appspot.com.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        SERVICE_ACCOUNT_KEY_PATH: config.serviceAccountKeyPath,
+        ...(config.firebaseStorageBucket ? { FIREBASE_STORAGE_BUCKET: config.firebaseStorageBucket } : {})
+      }
+    })
+  exampleConfig:
+    serviceAccountKeyPath: /absolute/path/to/serviceAccountKey.json
+    firebaseStorageBucket: your-project-id.firebasestorage.app

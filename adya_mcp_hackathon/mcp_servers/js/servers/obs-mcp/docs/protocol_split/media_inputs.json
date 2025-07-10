@@ -1,0 +1,156 @@
+{
+  "requests": [
+    {
+      "description": "Gets the status of a media input.\n\nMedia States:\n\n- `OBS_MEDIA_STATE_NONE`\n- `OBS_MEDIA_STATE_PLAYING`\n- `OBS_MEDIA_STATE_OPENING`\n- `OBS_MEDIA_STATE_BUFFERING`\n- `OBS_MEDIA_STATE_PAUSED`\n- `OBS_MEDIA_STATE_STOPPED`\n- `OBS_MEDIA_STATE_ENDED`\n- `OBS_MEDIA_STATE_ERROR`",
+      "requestType": "GetMediaInputStatus",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "media inputs",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": [
+        {
+          "valueName": "mediaState",
+          "valueType": "String",
+          "valueDescription": "State of the media input"
+        },
+        {
+          "valueName": "mediaDuration",
+          "valueType": "Number",
+          "valueDescription": "Total duration of the playing media in milliseconds. `null` if not playing"
+        },
+        {
+          "valueName": "mediaCursor",
+          "valueType": "Number",
+          "valueDescription": "Position of the cursor in milliseconds. `null` if not playing"
+        }
+      ]
+    },
+    {
+      "description": "Sets the cursor position of a media input.\n\nThis request does not perform bounds checking of the cursor position.",
+      "requestType": "SetMediaInputCursor",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "media inputs",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "mediaCursor",
+          "valueType": "Number",
+          "valueDescription": "New cursor position to set",
+          "valueRestrictions": ">= 0",
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Offsets the current cursor position of a media input by the specified value.\n\nThis request does not perform bounds checking of the cursor position.",
+      "requestType": "OffsetMediaInputCursor",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "media inputs",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "mediaCursorOffset",
+          "valueType": "Number",
+          "valueDescription": "Value to offset the current cursor position by",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Triggers an action on a media input.",
+      "requestType": "TriggerMediaInputAction",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "media inputs",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the media input",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "mediaAction",
+          "valueType": "String",
+          "valueDescription": "Identifier of the `ObsMediaInputAction` enum",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

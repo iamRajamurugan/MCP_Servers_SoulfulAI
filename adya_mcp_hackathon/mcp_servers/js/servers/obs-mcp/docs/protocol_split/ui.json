@@ -1,0 +1,222 @@
+{
+  "requests": [
+    {
+      "description": "Gets whether studio is enabled.",
+      "requestType": "GetStudioModeEnabled",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "studioModeEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "Whether studio mode is enabled"
+        }
+      ]
+    },
+    {
+      "description": "Enables or disables studio mode",
+      "requestType": "SetStudioModeEnabled",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "studioModeEnabled",
+          "valueType": "Boolean",
+          "valueDescription": "True == Enabled, False == Disabled",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Opens the properties dialog of an input.",
+      "requestType": "OpenInputPropertiesDialog",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Opens the filters dialog of an input.",
+      "requestType": "OpenInputFiltersDialog",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Opens the interact dialog of an input.",
+      "requestType": "OpenInputInteractDialog",
+      "complexity": 1,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "inputName",
+          "valueType": "String",
+          "valueDescription": "Name of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "inputUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the input to open the dialog of",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Gets a list of connected monitors and information about them.",
+      "requestType": "GetMonitorList",
+      "complexity": 2,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [],
+      "responseFields": [
+        {
+          "valueName": "monitors",
+          "valueType": "Array<Object>",
+          "valueDescription": "a list of detected monitors with some information"
+        }
+      ]
+    },
+    {
+      "description": "Opens a projector for a specific output video mix.\n\nMix types:\n\n- `OBS_WEBSOCKET_VIDEO_MIX_TYPE_PREVIEW`\n- `OBS_WEBSOCKET_VIDEO_MIX_TYPE_PROGRAM`\n- `OBS_WEBSOCKET_VIDEO_MIX_TYPE_MULTIVIEW`\n\nNote: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.",
+      "requestType": "OpenVideoMixProjector",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "videoMixType",
+          "valueType": "String",
+          "valueDescription": "Type of mix to open",
+          "valueRestrictions": null,
+          "valueOptional": false,
+          "valueOptionalBehavior": null
+        },
+        {
+          "valueName": "monitorIndex",
+          "valueType": "Number",
+          "valueDescription": "Monitor index, use `GetMonitorList` to obtain index",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "-1: Opens projector in windowed mode"
+        },
+        {
+          "valueName": "projectorGeometry",
+          "valueType": "String",
+          "valueDescription": "Size/Position data for a windowed projector, in Qt Base64 encoded format. Mutually exclusive with `monitorIndex`",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "N/A"
+        }
+      ],
+      "responseFields": []
+    },
+    {
+      "description": "Opens a projector for a source.\n\nNote: This request serves to provide feature parity with 4.x. It is very likely to be changed/deprecated in a future release.",
+      "requestType": "OpenSourceProjector",
+      "complexity": 3,
+      "rpcVersion": "1",
+      "deprecated": false,
+      "initialVersion": "5.0.0",
+      "category": "ui",
+      "requestFields": [
+        {
+          "valueName": "sourceName",
+          "valueType": "String",
+          "valueDescription": "Name of the source to open a projector for",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "sourceUuid",
+          "valueType": "String",
+          "valueDescription": "UUID of the source to open a projector for",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "Unknown"
+        },
+        {
+          "valueName": "monitorIndex",
+          "valueType": "Number",
+          "valueDescription": "Monitor index, use `GetMonitorList` to obtain index",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "-1: Opens projector in windowed mode"
+        },
+        {
+          "valueName": "projectorGeometry",
+          "valueType": "String",
+          "valueDescription": "Size/Position data for a windowed projector, in Qt Base64 encoded format. Mutually exclusive with `monitorIndex`",
+          "valueRestrictions": null,
+          "valueOptional": true,
+          "valueOptionalBehavior": "N/A"
+        }
+      ],
+      "responseFields": []
+    }
+  ]
+}

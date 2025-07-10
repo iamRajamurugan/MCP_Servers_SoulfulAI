@@ -1,0 +1,59 @@
+# Smithery configuration file: https://smithery.ai/docs/build/project-config
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - supabaseUrl
+      - supabaseAnonKey
+    properties:
+      supabaseUrl:
+        type: string
+        description: Self-hosted Supabase HTTP URL
+      supabaseAnonKey:
+        type: string
+        description: Supabase anonymous key
+      supabaseServiceRoleKey:
+        type: string
+        description: Supabase service role key (optional)
+      databaseUrl:
+        type: string
+        description: Direct PostgreSQL connection string (optional)
+      supabaseAuthJwtSecret:
+        type: string
+        description: Supabase JWT secret (optional)
+      toolsConfig:
+        type: string
+        description: Path to tools config JSON (optional)
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => {
+      const args = [
+        'dist/index.js',
+        '--url', config.supabaseUrl,
+        '--anon-key', config.supabaseAnonKey
+      ];
+      if (config.supabaseServiceRoleKey) {
+        args.push('--service-key', config.supabaseServiceRoleKey);
+      }
+      if (config.databaseUrl) {
+        args.push('--db-url', config.databaseUrl);
+      }
+      if (config.supabaseAuthJwtSecret) {
+        args.push('--jwt-secret', config.supabaseAuthJwtSecret);
+      }
+      if (config.toolsConfig) {
+        args.push('--tools-config', config.toolsConfig);
+      }
+      return { command: 'node', args };
+    }
+  exampleConfig:
+    supabaseUrl: http://localhost:8000
+    supabaseAnonKey: example-anon-key
+    supabaseServiceRoleKey: example-service-key
+    databaseUrl: postgresql://postgres:password@localhost:5432/postgres
+    supabaseAuthJwtSecret: example-jwt-secret
+    toolsConfig: ./mcp-tools.json
