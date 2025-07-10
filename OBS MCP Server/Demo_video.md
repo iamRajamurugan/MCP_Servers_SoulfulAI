@@ -5,7 +5,7 @@
 
 **Test Highlights:**
 - WebSocket authentication setup.
-- Executed commands like `StartRecording`, `SwitchScene`.
+- Executed with tools like `recording`,`vitrula camera`,etc.
 - Validated JSON-RPC response structure.
 
 ---
