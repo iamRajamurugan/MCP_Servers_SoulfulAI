@@ -1,7 +1,7 @@
 ## Salesforce MCP Server
 
 **Video Recording:**  
-[Watch Salesforce MCP Test Video](https://drive.google.com/drive/folders/1KJ96Y6QCLnvHY3KQAAgmuDMTwlfRmKPX?usp=sharing)
+[Watch Salesforce MCP Test Video](https://drive.google.com/file/d/1jM-eganT6vIGkRok8RhOn0p2EfezUpZd/view?usp=drive_link)
 
 **Test Highlights:**
 - Connected using OAuth2 credentials.
